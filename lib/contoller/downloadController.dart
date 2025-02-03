@@ -5,7 +5,7 @@ import 'dart:html' as html; // Import for web downloads
 class DownloadController {
   void downloadResume() {
 
-    const pdfUrl = 'assets/Jino -Flutter.pdf'; 
+    const pdfUrl = 'assets/jinoFlutterDev.pdf'; 
     html.AnchorElement anchorElement = html.AnchorElement(href: pdfUrl)
       ..setAttribute('download', 'JINO_R_Resume.pdf') // Suggested filename for download
       ..click();
