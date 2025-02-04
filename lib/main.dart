@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:protfolio_web/constants/colors.dart';
+import 'package:protfolio_web/utlis/scrollBehavior.dart';
 
 import 'homePage.dart';
 
@@ -13,10 +15,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
-
+scaffoldBackgroundColor: AppColor.backGroundHeaderColor,
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),

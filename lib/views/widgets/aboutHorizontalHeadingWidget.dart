@@ -61,3 +61,63 @@ class aboutHortizontalHeadingWidget extends StatelessWidget {
     );
   }
 }
+
+
+
+class HeadingWidget extends StatelessWidget {
+   const HeadingWidget({
+    super.key,
+    required this.size, required this.text,
+  });
+
+  final Size size;
+  final String text;
+  
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      alignment: Alignment.center, // Center all children in the stack
+      children: [
+        Padding(
+          padding: const EdgeInsets.only(left: 5),
+          child: Container(
+            width: size.width * 0.30, // Thin vertical line
+            height: size.height * 0.001, // Line height
+            color: AppColor.textColorIron,
+          ),
+        ),
+        Transform.rotate(
+           angle: -0 *
+                    (3.14159265359 /
+                        180),
+          child: Container(
+            width: size.width * 0.080, // Smaller width to fit screen
+            height: size.height * 0.08, // Height should match the line
+              
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
+             
+                gradient: LinearGradient(
+                                  begin: Alignment.topLeft,
+                                  end: Alignment.bottomRight,
+                                  colors: AppColor().getButtonGradientColors(),
+                                ),
+            
+            ),
+            child:  Center(
+              child:  Text(
+                text,
+                style: const TextStyle(letterSpacing: 1.6,
+                  color: Colors.white,
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+}

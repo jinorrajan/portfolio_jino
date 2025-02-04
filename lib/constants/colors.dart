@@ -4,6 +4,8 @@ class AppColor{
 
   static const Color backGroundColor1 =  Color.fromRGBO(0, 0, 0, 1);
   static const Color backGroundHeaderColor =  Color.fromRGBO(0, 0, 16, 1);
+  static const Color courserSliderBackgroundColor =  Color.fromRGBO(12, 12, 33, 1);
+
 
   static const Color backGroundColor2 =Color.fromRGBO(0, 0, 16, 1);
   static const Color textColorNiceBlue = Color.fromRGBO(77, 75, 184, 1);

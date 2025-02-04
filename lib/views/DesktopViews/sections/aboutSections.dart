@@ -2,8 +2,10 @@
 import 'package:flutter/material.dart';
 import 'package:protfolio_web/constants/colors.dart';
 import 'package:protfolio_web/views/widgets/assetsImageWidget.dart';
+import 'package:protfolio_web/views/widgets/circleDotPainterWidget.dart';
 
 import '../../../contoller/aboutSectionController.dart';
+import '../../../contoller/circularAnimationController.dart';
 import '../../widgets/aboutHorizontalHeadingWidget.dart';
 import '../desktopView.dart';
 
@@ -21,10 +23,12 @@ class Aboutsections extends StatefulWidget {
 class _AboutsectionsState extends State<Aboutsections> with TickerProviderStateMixin {
 
   late AboutSectionController _controller;
+    late CircularAnimationController _circularAnimation;
 
   @override
   void initState() {
     super.initState();
+    _circularAnimation = CircularAnimationController(this);
     _controller = AboutSectionController(vsync: this);
   }
 
@@ -36,6 +40,8 @@ class _AboutsectionsState extends State<Aboutsections> with TickerProviderStateM
 
   @override
   Widget build(BuildContext context) {
+    Size screenSize = MediaQuery.of(context).size;
+     double circleSize = screenSize.height * 0.4;
     return Container(
       key: sectionKey2,
       width: widget.size.width,
@@ -54,30 +60,47 @@ class _AboutsectionsState extends State<Aboutsections> with TickerProviderStateM
                 SizedBox(width: widget.size.width * 0.04),
 
                 // Profile Image widget
-                Container(
-                  height: widget.size.height * 0.4,
-                  width: widget.size.height * 0.4, // Ensure it's a perfect circle
-                  decoration: const BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: AppColor
-                        .textColorIron, // Background color inside the circle
-                  ),
-                  child: Container(
-                    decoration: const BoxDecoration(
-                      shape:
-                          BoxShape.circle, // Ensures the child fits the circle
-                    ),
-                    child: ClipOval(
-                      child: AssetImageWidget(
-                        category: 'images',
-                        name: 'profile',
-                        width: widget.size.height *
-                            0.38, // Adjust to fit inside the padding
-                        height: widget.size.height * 0.38,
-                        // Ensures image fits inside the circle
+                    Stack(
+                  children: [
+                    Container(
+                      height: widget.size.height * 0.4,
+                      width: widget.size.height * 0.4, // Ensure it's a perfect circle
+                      decoration: const BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: AppColor
+                            .textColorIron, // Background color inside the circle
+                      ),
+                      child: Container(
+                        decoration: const BoxDecoration(
+                          shape:
+                              BoxShape.circle,
+                        ),
+                        child: ClipOval(
+                          child: AssetImageWidget(
+                            category: 'images',
+                            name: 'profile',
+                            width: widget.size.height *
+                                0.38, 
+                            height: widget.size.height * 0.38,
+                            
+                          ),
+                        ),
                       ),
                     ),
-                  ),
+                     Positioned.fill(
+              child: AnimatedBuilder(
+                animation: _circularAnimation.animation,
+                builder: (context, child) {
+                  return CustomPaint(
+                    painter: Circledotpainterwidget(
+                      _circularAnimation.animation.value,
+                      radius: circleSize / 2, // Radius of circle
+                    ),
+                  );
+                },
+              ),
+            ),
+                  ],
                 ),
                 const Spacer(),
                 Column(

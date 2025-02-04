@@ -5,15 +5,15 @@ import '../../contoller/assetController.dart';
 class AssetImageWidget extends StatelessWidget {
   final String category;
   final String name;
-  final double width;
-  final double height;
+   double? width;
+   double? height;
 
-  const AssetImageWidget({
+   AssetImageWidget({
     super.key,
     required this.category,
     required this.name,
-    required this.width,
-    required this.height,
+     this.width,
+     this.height,
   });
 
   @override

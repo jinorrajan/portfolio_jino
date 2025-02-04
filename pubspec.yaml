@@ -37,6 +37,7 @@ dependencies:
   cupertino_icons: ^1.0.6
   flutter_sequence_animation: ^4.0.0
   url_launcher: ^6.3.1
+  carousel_slider: ^5.0.0
 
 dev_dependencies:
   flutter_test:
