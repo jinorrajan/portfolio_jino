@@ -94,7 +94,7 @@ class _DesktopViewState extends State<DesktopView>
               size: size,
             ),
 
-            SkillSection(size: size, controller: skillController,),
+            // SkillSection(size: size, controller: skillController,),
             Container(
               key: sectionKey4,
               height: size.height * 0.9,

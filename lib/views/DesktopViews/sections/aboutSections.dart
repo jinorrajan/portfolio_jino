@@ -114,7 +114,7 @@ class _AboutsectionsState extends State<Aboutsections> with TickerProviderStateM
                         SizedBox(height: widget.size.height * 0.02),
                     SizedBox(
                       width: widget.size.width * 0.50,
-                      child: const Text(
+                      child:  Text(
                         textAlign: TextAlign.justify,
                         'I am Jino R., a passionate Flutter developer with 1 year of experience, including a 6-month internship and self-taught learning. I hold a B.E. in Artificial Intelligence and Data Science. I specialize in creating modern, user-friendly applications, combining state-of-the-art technology with clean, responsive designs. My portfolio includes innovative projects like a matrimony app, a dating app called Soul Whisper, and a weather app, showcasing my skills in Firebase integration, state management, and delivering exceptional user experiences.',
                         style: TextStyle(

@@ -30,7 +30,7 @@ class SkillSection extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       key: sectionKey3,
-      height: size.height * 0.7,
+      height: size.height * 0.6,
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 50),
         child: Column(
@@ -42,52 +42,54 @@ class SkillSection extends StatelessWidget {
             SizedBox(height: size.height * 0.09),
 
             // Carousel Slider
-            ValueListenableBuilder<int>(
-              valueListenable: controller.currentIndexNotifier, // Listen to changes in the index
-              builder: (context, currentIndex, child) {
-                return CarouselSlider(
-                  items: items.map((item) {
-                    int index = items.indexOf(item);
-                    bool isActive = index == currentIndex; // Check if item is active
-                    return Container(
-                      width: size.width * 0.18, // Fixed width
-                      decoration: BoxDecoration(
-                        color: isActive
-                            ? AppColor.textColorNiceBlue // Active background color
-                            : AppColor.courserSliderBackgroundColor,
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Image.asset(item["image"]!, scale: 1), // Image
-                          SizedBox(height: size.height * 0.03),
-                          Text(
-                            item["text"]!,
-                            style: TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.w400,
-                              color: isActive
-                                  ? Colors.white // Active text color
-                                  : AppColor.textColorIron,
-                            ),
-                          ), // Text
-                        ],
-                      ),
-                    );
-                  }).toList(),
-                  options: CarouselOptions(
-                    height: size.height * 0.34, // Set the height for the carousel
-                    enlargeCenterPage: true,
-                    autoPlay: true,
-                    enableInfiniteScroll: true,
-                    viewportFraction: 0.3, // Show part of next/prev items
-                    onPageChanged: (index, reason) {
-                      controller.updateIndex(index); // Update index in controller
-                    },
-                  ),
-                );
-              },
+            Expanded(
+              child: ValueListenableBuilder<int>(
+                valueListenable: controller.currentIndexNotifier, // Listen to changes in the index
+                builder: (context, currentIndex, child) {
+                  return CarouselSlider(
+                    items: items.map((item) {
+                      int index = items.indexOf(item);
+                      bool isActive = index == currentIndex; // Check if item is active
+                      return Container(
+                        width: size.width * 0.18, // Fixed width
+                        decoration: BoxDecoration(
+                          color: isActive
+                              ? AppColor.textColorNiceBlue // Active background color
+                              : AppColor.courserSliderBackgroundColor,
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Image.asset(item["image"]!, scale: 1), // Image
+                            SizedBox(height: size.height * 0.03),
+                            Text(
+                              item["text"]!,
+                              style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.w400,
+                                color: isActive
+                                    ? Colors.white // Active text color
+                                    : AppColor.textColorIron,
+                              ),
+                            ), // Text
+                          ],
+                        ),
+                      );
+                    }).toList(),
+                    options: CarouselOptions(
+                      height: size.height * 0.34, // Set the height for the carousel
+                      enlargeCenterPage: true,
+                      autoPlay: false,
+                      enableInfiniteScroll: true,
+                      viewportFraction: 0.3, // Show part of next/prev items
+                      onPageChanged: (index, reason) {
+                        controller.updateIndex(index); // Update index in controller
+                      },
+                    ),
+                  );
+                },
+              ),
             ),
           ],
         ),
