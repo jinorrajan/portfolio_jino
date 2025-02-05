@@ -42,6 +42,7 @@ class _AboutsectionsState extends State<Aboutsections> with TickerProviderStateM
   Widget build(BuildContext context) {
     Size screenSize = MediaQuery.of(context).size;
      double circleSize = screenSize.height * 0.4;
+
     return Container(
       key: sectionKey2,
       width: widget.size.width,
@@ -60,20 +61,16 @@ class _AboutsectionsState extends State<Aboutsections> with TickerProviderStateM
                 SizedBox(width: widget.size.width * 0.04),
 
                 // Profile Image widget
-                    Stack(
-                  children: [
-                    Container(
-                      height: widget.size.height * 0.4,
-                      width: widget.size.height * 0.4, // Ensure it's a perfect circle
-                      decoration: const BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: AppColor
-                            .textColorIron, // Background color inside the circle
-                      ),
-                      child: Container(
+                    Flexible(
+                      child: Stack(
+                                        children: [
+                      Container(
+                        height: widget.size.height * 0.4,
+                        width: widget.size.height * 0.4, // Ensure it's a perfect circle
                         decoration: const BoxDecoration(
-                          shape:
-                              BoxShape.circle,
+                          shape: BoxShape.circle,
+                          color: AppColor
+                              .textColorIron, // Background color inside the circle
                         ),
                         child: ClipOval(
                           child: AssetImageWidget(
@@ -86,35 +83,35 @@ class _AboutsectionsState extends State<Aboutsections> with TickerProviderStateM
                           ),
                         ),
                       ),
+                       Positioned.fill(
+                                    child: AnimatedBuilder(
+                                      animation: _circularAnimation.animation,
+                                      builder: (context, child) {
+                                        return CustomPaint(
+                      painter: Circledotpainterwidget(
+                        _circularAnimation.animation.value,
+                        radius: circleSize / 2, // Radius of circle
+                      ),
+                                        );
+                                      },
+                                    ),
+                                  ),
+                                        ],
+                                      ),
                     ),
-                     Positioned.fill(
-              child: AnimatedBuilder(
-                animation: _circularAnimation.animation,
-                builder: (context, child) {
-                  return CustomPaint(
-                    painter: Circledotpainterwidget(
-                      _circularAnimation.animation.value,
-                      radius: circleSize / 2, // Radius of circle
-                    ),
-                  );
-                },
-              ),
-            ),
-                  ],
-                ),
-                const Spacer(),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                   const  Text('Curious about me? ', style: TextStyle(
-                          color: AppColor.textColorNiceBlue,
-                          fontSize: 26,
-                          fontWeight: FontWeight.w600,
-                        ),),
-                        SizedBox(height: widget.size.height * 0.02),
-                    SizedBox(
-                      width: widget.size.width * 0.50,
-                      child:  Text(
+                  SizedBox(width: widget.size.width * 0.07),
+                Flexible(
+                 flex: 2,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                     const  Text('Curious about me? ', style: TextStyle(
+                            color: AppColor.textColorNiceBlue,
+                            fontSize: 26,
+                            fontWeight: FontWeight.w600,
+                          ),),
+                          SizedBox(height: widget.size.height * 0.02),
+                      Text(
                         textAlign: TextAlign.justify,
                         'I am Jino R., a passionate Flutter developer with 1 year of experience, including a 6-month internship and self-taught learning. I hold a B.E. in Artificial Intelligence and Data Science. I specialize in creating modern, user-friendly applications, combining state-of-the-art technology with clean, responsive designs. My portfolio includes innovative projects like a matrimony app, a dating app called Soul Whisper, and a weather app, showcasing my skills in Firebase integration, state management, and delivering exceptional user experiences.',
                         style: TextStyle(
@@ -122,10 +119,10 @@ class _AboutsectionsState extends State<Aboutsections> with TickerProviderStateM
                           fontSize: 20,
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
-                const Spacer(),
+                SizedBox(width: widget.size.width * 0.01),
               ],
             ),
           ],

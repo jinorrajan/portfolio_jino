@@ -64,44 +64,42 @@ void initState() {
                     children: [
                       SizedBox(
                         width: widget.size.width * 0.5, 
-                        child: Flexible(
-                          child: RichText(
-                            text: const TextSpan(
-                              children: [
-                                TextSpan(
-                                  text: "Hello,\nThis is ",
-                                  style: TextStyle(
-                                    color: AppColor.textColorIron,
-                                    fontSize: 58,
-                                    fontWeight: FontWeight.bold,
-                                  ),
+                        child: RichText(
+                          text: const TextSpan(
+                            children: [
+                              TextSpan(
+                                text: "Hello,\nThis is ",
+                                style: TextStyle(
+                                  color: AppColor.textColorIron,
+                                  fontSize: 58,
+                                  fontWeight: FontWeight.bold,
                                 ),
-                                TextSpan(
-                                  text: "JINO R",
-                                  style: TextStyle(
-                                    color: AppColor.textColorNiceBlue,
-                                    fontSize: 58,
-                                    fontWeight: FontWeight.bold,
-                                  ),
+                              ),
+                              TextSpan(
+                                text: "JINO R",
+                                style: TextStyle(
+                                  color: AppColor.textColorNiceBlue,
+                                  fontSize: 58,
+                                  fontWeight: FontWeight.bold,
                                 ),
-                                TextSpan(
-                                  text: ", I'm a ",
-                                  style: TextStyle(
-                                    color: AppColor.textColorIron,
-                                    fontSize: 58,
-                                    fontWeight: FontWeight.bold,
-                                  ),
+                              ),
+                              TextSpan(
+                                text: ", I'm a ",
+                                style: TextStyle(
+                                  color: AppColor.textColorIron,
+                                  fontSize: 58,
+                                  fontWeight: FontWeight.bold,
                                 ),
-                                TextSpan(
-                                  text: "\nFlutter Developer.",
-                                  style: TextStyle(
-                                    color: AppColor.textColorNiceBlue,
-                                    fontSize: 58,
-                                    fontWeight: FontWeight.bold,
-                                  ),
+                              ),
+                              TextSpan(
+                                text: "\nFlutter Developer.",
+                                style: TextStyle(
+                                  color: AppColor.textColorNiceBlue,
+                                  fontSize: 58,
+                                  fontWeight: FontWeight.bold,
                                 ),
-                              ],
-                            ),
+                              ),
+                            ],
                           ),
                         ),
                       ),
@@ -170,7 +168,6 @@ void initState() {
                 Stack(
                   alignment: Alignment.center,
                   children: [
-                    
                     AnimatedBuilder(
                       animation: _homesectionController.circleSizeAnimation,
                       builder: (context, child) {
@@ -196,14 +193,13 @@ void initState() {
                     AssetImageWidget(
                       category: 'images',
                       name: 'home',
-                      width: widget.size.width * 0.32,
+                      width: widget.size.width * 0.3,
                       height: widget.size.height * 0.7,
                     ),
                   ],
                 ),
-                SizedBox(width: widget.size.width * 0.024),
+                SizedBox(width: widget.size.width * 0.01),
               ],
-              
             ),
           ),
         );
